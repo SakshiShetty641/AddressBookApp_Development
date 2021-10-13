@@ -2,6 +2,8 @@ package com.bridgelabz.addressbookappdevelopment.service;
 
 import com.bridgelabz.addressbookappdevelopment.dto.AddressBookDto;
 import com.bridgelabz.addressbookappdevelopment.entity.AddressBook;
+import com.bridgelabz.addressbookappdevelopment.repository.AddressBookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -14,6 +16,9 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AddressBookService {
+
+    @Autowired
+    private AddressBookRepository addressBookRepository;
 
     public AddressBook addAddress(AddressBookDto addressBookDto) {
         return null;
