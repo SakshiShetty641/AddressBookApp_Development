@@ -11,11 +11,12 @@ import lombok.Setter;
  * @since - 13/10/2021
  */
 
-
 @Getter
 @Setter
 @Data
 public class AddressBookDto {
     private String name;
     private String address;
+    private long phoneNumber;
+
 }

@@ -6,6 +6,8 @@ import com.bridgelabz.addressbookappdevelopment.service.AddressBookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * Layer that receives various HTTP request from client
  * @author - Sakshi Shetty
@@ -18,6 +20,15 @@ public class AddressBookController {
 
     @Autowired
     private AddressBookService addressBookService;
+
+    /**
+     * Function to get mapping from client
+     * @return List of address
+     */
+    @GetMapping("/address")
+    public List<AddressBook> addressBookList() {
+        return addressBookService.addressBookList();
+    }
 
     /**
      * Function to receive get request from client
