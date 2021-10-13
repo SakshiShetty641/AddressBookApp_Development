@@ -3,6 +3,7 @@ package com.bridgelabz.addressbookappdevelopment.service;
 import com.bridgelabz.addressbookappdevelopment.dto.AddressBookDto;
 import com.bridgelabz.addressbookappdevelopment.entity.AddressBook;
 import com.bridgelabz.addressbookappdevelopment.repository.AddressBookRepository;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,9 @@ public class AddressBookService {
     @Autowired
     private AddressBookRepository addressBookRepository;
 
+    @Autowired
+    private ModelMapper modelMapper;
+
     /**
      * Function to get the list of address stored in database
      * @return list of address
@@ -38,9 +42,7 @@ public class AddressBookService {
      */
     public AddressBook addAddress(AddressBookDto addressBookDto) {
         AddressBook addressBook = new AddressBook();
-        addressBook.setName(addressBookDto.getName());
-        addressBook.setAddress(addressBookDto.getAddress());
-        addressBook.setPhoneNumber(addressBookDto.getPhoneNumber());
+        modelMapper.map(addressBookDto, addressBook);
         return addressBookRepository.save(addressBook);
     }
 
@@ -54,9 +56,7 @@ public class AddressBookService {
         Optional<AddressBook> addressBook = addressBookRepository.findById(id);
         if (addressBook.isPresent()) {
             AddressBook address = addressBook.get();
-            address.setName(addressBookDto.getName());
-            address.setAddress(addressBookDto.getAddress());
-            address.setPhoneNumber(addressBookDto.getPhoneNumber());
+            modelMapper.map(addressBookDto, address);
             return addressBookRepository.save(address);
         }
         return null;
