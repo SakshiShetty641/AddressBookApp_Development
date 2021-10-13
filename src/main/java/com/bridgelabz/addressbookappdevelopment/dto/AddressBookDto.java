@@ -16,4 +16,6 @@ import lombok.Setter;
 @Setter
 @Data
 public class AddressBookDto {
+    private String name;
+    private String address;
 }
