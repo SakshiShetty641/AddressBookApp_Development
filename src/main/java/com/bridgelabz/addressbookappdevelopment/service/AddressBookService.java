@@ -47,6 +47,19 @@ public class AddressBookService {
     }
 
     /**
+     * Function to get a particular address stored in database
+     * @param id unique id of the address in database
+     * @return required address
+     */
+    public AddressBook findAddressById(int id) {
+        Optional<AddressBook> address = addressBookRepository.findById(id);
+        if (address.isPresent()) {
+            return address.get();
+        }
+        return null;
+    }
+
+    /**
      * Function to update the available address in the database
      * @param id unique id of the person whose address is stored in db
      * @param addressBookDto data from client

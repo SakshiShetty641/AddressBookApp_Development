@@ -41,6 +41,16 @@ public class AddressBookController {
     }
 
     /**
+     * Function to receive get request from client
+     * @param id unique id of the address
+     * @return required address
+     */
+    @GetMapping("/findById")
+    public AddressBook findAddressById(@RequestParam int id){
+        return addressBookService.findAddressById(id);
+    }
+
+    /**
      * Function to receive put request from client
      * @param id - unique id of the person whose address is stored in db
      * @param addressBookDto address data from client
